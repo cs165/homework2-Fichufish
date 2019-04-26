@@ -1,1 +1,92 @@
 /* TODO(you): Write the CSS to finish the assignment! */
+:root {
+	--grid-size: 100%;
+	--margin-size: 2.5%;
+	--square-size: calc((var(--grid-size) - var(--margin-size)) / 3);
+}
+
+.choice-grid {
+	width: var(--grid-size);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+}
+
+.choice-grid div {
+	width: var(--square-size);
+	margin-bottom: 20px;
+	padding: 10px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	background-color: #f4f4f4;
+	border: 1px solid #dcdcdc;
+	box-sizing: border-box;
+}
+
+.choice-grid div img {
+	width: 100%;
+}
+
+.choice-grid img.checkbox {
+	align-self: normal;
+}
+
+.choice-grid div.checked {
+	background-color: #cfe3ff;
+}
+
+.choice-grid div.unchecked {
+	opacity: 0.5;
+}
+
+.result {
+	margin: 20px 0;
+	padding: 20px;
+	border: 1px solid #dcdcdc; 
+	box-sizing: border-box;
+}
+
+.result h1{
+	font-size: larger;
+	margin: 0;
+}
+
+.result p {
+	margin: 18px 0;
+}
+
+.result button {
+	width: 100%;
+	height: 50px;
+	background-color: #cecece;
+}
+
+.result button:hover {
+	background-color: #e0e0e0;
+}
+
+@media (max-width: 700px) {
+
+	article {
+		width: 95%;
+	}
+
+}
+
+@media (max-width: 500px) {
+
+	header div span {
+		display: none;
+	}
+
+	:root {
+	--grid-size: 100%;
+	--margin-size: 2%;
+	--square-size: calc((var(--grid-size) - var(--margin-size)) / 2);
+	}
+
+}
+
+
