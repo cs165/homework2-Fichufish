@@ -11,7 +11,8 @@ const POSITIVE_MESSAGES = [
   'You can do it!',
   'You are not a failure.',
   'You matter.',
-  'Your life matters.'
+  'Your life matters.',
+  'Owowowowowowowowo.'
 ];
 
 chrome.runtime.onConnect.addListener(function(port) {
@@ -20,30 +21,27 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 function changeTheWord(event) {
 	event.stopPropagation();
-	var p1 = event.currentTarget.children[0].children[1].children[1].children[0];
-	var p2 = event.currentTarget.children[0].children[1].children[2].children[0];
+	const p = event.currentTarget.querySelector('div.content p.TweetTextSize.TweetTextSize--normal.js-tweet-text.tweet-text');
 	const index = Math.floor(Math.random() * POSITIVE_MESSAGES.length);
-
-	if(p1 !== undefined && p1.nodeName == "P") {
-		p1.textContent = POSITIVE_MESSAGES[index];
-	}
-	else if(p2 !== undefined && p2.nodeName == "P") {
-		p2.textContent = POSITIVE_MESSAGES[index];
+	if(p !== undefined && p.nodeName == "P") {
+		p.textContent = POSITIVE_MESSAGES[index];
 	}
 }
 
 function changeBackground(event) {
-	event.currentTarget.children[0].style.backgroundImage = 'url(' + bgurl + ')';
-	event.currentTarget.children[0].style.backgroundRepeat = 'repeat';
-	event.currentTarget.children[0].style.opacity = '0.8';
-	event.currentTarget.children[0].style.cursor = 'url(' + csurl + ') 4 12, auto';
+	const bgdiv = event.currentTarget.querySelector('div');
+	bgdiv.style.backgroundImage = 'url(' + bgurl + ')';
+	bgdiv.style.backgroundRepeat = 'repeat';
+	bgdiv.style.opacity = '0.8';
+	bgdiv.style.cursor = 'url(' + csurl + ') 4 12, auto';
 }
 
 function removeBackground(event) {
-	event.currentTarget.children[0].style.backgroundImage = '';
-	event.currentTarget.children[0].style.backgroundRepeat = '';
-	event.currentTarget.children[0].style.opacity = '';
-	event.currentTarget.children[0].style.cursor = '';
+	const bgdiv = event.currentTarget.querySelector('div');
+	bgdiv.style.backgroundImage = '';
+	bgdiv.style.backgroundRepeat = '';
+	bgdiv.style.opacity = '';
+	bgdiv.style.cursor = '';
 }
 
 
