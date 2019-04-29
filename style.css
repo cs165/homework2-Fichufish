@@ -82,9 +82,9 @@
 @media (max-width: 500px) {
 
 	:root {
-	--grid-size: 100%;
-	--margin-size: 2%;
-	--square-size: calc((var(--grid-size) - var(--margin-size)) / 2);
+		--grid-size: 100%;
+		--margin-size: 2%;
+		--square-size: calc((var(--grid-size) - var(--margin-size)) / 2);
 	}
 
 }
