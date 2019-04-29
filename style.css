@@ -73,13 +73,13 @@
 		width: 95%;
 	}
 
-}
-
-@media (max-width: 500px) {
-
 	header div span {
 		display: none;
 	}
+
+}
+
+@media (max-width: 500px) {
 
 	:root {
 	--grid-size: 100%;
@@ -88,5 +88,4 @@
 	}
 
 }
-
 
