@@ -7,12 +7,12 @@ function assignChecked(check) {
 	const qID = '[data-question-id="'+check.dataset.questionId+'"]';
 	const qbox = document.querySelectorAll(qID);
 	for(const box of qbox) {
-		box.children[1].src = IMG_UNCHECKED;
+		box.querySelector('.checkbox').src = IMG_UNCHECKED;
 		box.classList.remove('checked');
 		box.classList.add('unchecked');
 	}
 	check.classList.replace('unchecked', 'checked');
-	check.children[1].src = IMG_CHECKED;
+	check.querySelector('.checkbox').src = IMG_CHECKED;
 	if(check.dataset.questionId==='one') {
 		takenQ[0]=check.dataset.choiceId;
 	}else if(check.dataset.questionId==='two') {
@@ -35,27 +35,26 @@ function isAllChecked() {
 
 function restartQuiz() {
 	const a = document.querySelector('article');
-	a.lastChild.children[2].removeEventListener('click', restartQuiz);
+	a.querySelector('.result button').removeEventListener('click', restartQuiz);
 	for(let i=0; i<3; i++) {
 		a.lastChild.removeChild(a.lastChild.children[0]);
 		delete takenQ[i];
 	}
 	a.removeChild(a.lastChild);
 	for(const box of boxes) {
-		box.children[1].src = IMG_UNCHECKED;
+		box.querySelector('.checkbox').src = IMG_UNCHECKED;
 		box.classList.remove('unchecked');
 		box.classList.remove('checked');
 		box.addEventListener('click', changeToChecked);
 	}
-	document.getElementById('author').scrollIntoView();
+	document.body.scrollIntoView();
 }
 
 function displayResult(result) {
-	const articleContainer = document.querySelector('article');
+	const aContainer = document.querySelector('article');
 	const rSection = document.createElement('section');
 	rSection.classList.add('result');
-	articleContainer.appendChild(rSection);
-	const resultContainer = document.querySelector('.result');
+	aContainer.appendChild(rSection);
 
 	const header = document.createElement('h1');
 		header.textContent = 'You got: ' + RESULTS_MAP[result].title;
@@ -67,9 +66,9 @@ function displayResult(result) {
 	resultButton.textContent = 'Restart quiz';
 	resultButton.addEventListener('click', restartQuiz);
 	
-	resultContainer.appendChild(header);
-	resultContainer.appendChild(content);
-	resultContainer.appendChild(resultButton);
+	rSection.appendChild(header);
+	rSection.appendChild(content);
+	rSection.appendChild(resultButton);
 }
 
 function changeToChecked(event) {
